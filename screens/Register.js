@@ -13,6 +13,8 @@ import CustomTextInput from "../components/CustomTextInput";
 import CustomDropDown from "../components/CustomDropDown";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Toast from "react-native-root-toast";
+import { db } from "../firebase-config.js";
+import { set, ref, onValue, push, update, remove } from "firebase/database";
 
 const image = require("../assets/bgGradient2.jpg");
 
@@ -42,11 +44,11 @@ const Register = ({ navigation }) => {
   ];
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : null}
-    >
-      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === "ios" ? "padding" : null}
+      >
         <SafeAreaView edges={["right", "left", "top"]} style={{ flex: 1 }}>
           <ScrollView style={styles.container}>
             <View style={styles.wrapper}>
@@ -94,7 +96,6 @@ const Register = ({ navigation }) => {
                 valueState={[email, setEmail]}
                 errorState={[errorEmail, setErrorEmail]}
                 placeholder="Email ID"
-                number={true}
               />
               <CustomTextInput
                 mode={0}
@@ -135,16 +136,16 @@ const Register = ({ navigation }) => {
                     : (detailsNotNull = false);
 
                   if (detailsNotNull) {
-                    navigation.navigate("HomeScreen");
-                    // set(ref(db, "/Details/" + user), {
-                    //   Name: name,
-                    //   Age: age,
-                    //   Gender: gender,
-                    //   BloodGroup: bloodGroup,
-                    //   PhoneNumber: phoneNumber,
-                    //   Email: email,
-                    //   Address: address,
-                    // });
+                    set(ref(db, "/UserDetails/" + name), {
+                      Name: name,
+                      Age: age,
+                      Gender: gender,
+                      BloodGroup: bloodGroup,
+                      PhoneNumber: phoneNumber,
+                      Email: email,
+                      Address: address,
+                    });
+                    Toast.show("Registration Successful");
                   } else {
                     Toast.show("Please enter all the details", {
                       duration: Toast.durations.LONG,
@@ -162,8 +163,8 @@ const Register = ({ navigation }) => {
             </View>
           </ScrollView>
         </SafeAreaView>
-      </ImageBackground>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </ImageBackground>
   );
 };
 

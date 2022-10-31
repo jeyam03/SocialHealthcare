@@ -7,6 +7,7 @@ import Register from "./screens/Register";
 import HomeScreen from "./screens/HomeScreen";
 import ReportEmergency from "./screens/ReportEmergency";
 import Hospitals from "./screens/Hospitals";
+import Assist from "./screens/Assist";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ const App = () => {
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="ReportEmergency" component={ReportEmergency} />
           <Stack.Screen name="Hospitals" component={Hospitals} />
+          <Stack.Screen name="Assist" component={Assist} />
         </Stack.Navigator>
       </NavigationContainer>
     </ToastContainer>

@@ -15,6 +15,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Toast from "react-native-root-toast";
 import CustomTextInput from "../components/CustomTextInput";
 import * as Location from 'expo-location';
+import { db } from "../firebase-config.js";
+import { set, ref, onValue, push, update, remove } from "firebase/database";
 
 const image = require("../assets/bgGradient2.jpg");
 
@@ -75,19 +77,25 @@ const ReportEmergency = ({ navigation }) => {
                 ></Image>
 
                 <Text style={styles.h2}>Latitude: {lat}</Text>
-                <Text style={styles.h2}>Longitude: {long}</Text>
+                <Text style={[styles.h2, {paddingBottom: 24}]}>Longitude: {long}</Text>
 
                 <CustomTextInput
                   mode={1}
                   valueState={[details, setDetails]}
                   errorState={[errorDetails, setErrorDetails]}
-                  placeholder="Enter Details"
+                  placeholder="Enter Emergency Details"
+                  rec
                 />
 
                 <Pressable
                   style={[styles.button, { width: '75%' }]}
                   onPress={() => {
-                    Linking.openURL("https://www.google.com/maps/dir/?api=1&origin=11.05307,77.02048&destination=11.024125,77.002967&travelmode=driving");
+                    var current = new Date();
+                    set(ref(db, `/Emergency/${current.toLocaleString().replaceAll('/', '-')}`), {
+                      Details: details,
+                      Lat: lat,
+                      Long: long
+                    });
                     Toast.show("Emergency Reported")
                   }}
                 >

@@ -70,61 +70,65 @@ const Hospitals = ({ navigation }) => {
                   source={require('../assets/location.png')}
                 ></Image>
 
-                <Text style={[styles.subtext, {marginBottom: 0}]}>Latitude: {lat}</Text>
+                <Text style={[styles.subtext, { marginBottom: 0 }]}>Latitude: {lat}</Text>
                 <Text style={styles.subtext}>Longitude: {long}</Text>
                 <Text style={styles.h2}>Click on any of the hospitals to navigate</Text>
               </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{
-                  fontSize: 48,
-                  fontWeight: "bold",
-                  color: "#2A2A2A",
-                  margin: 24,
-                }}>1.</Text>
-                <Pressable
-                  style={[styles.button, { width: '75%' }]}
-                  onPress={() => {
-                    Linking.openURL(`https://www.google.com/maps/dir/?api=1&origin=${lat},${long}&destination=11.018519,77.007314&travelmode=driving`);
-                  }}
-                >
-                  <Text style={styles.buttonText}>PSG Hospital</Text>
-                </Pressable>
-              </View>
+              {location && (
+                <View>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={{
+                      fontSize: 48,
+                      fontWeight: "bold",
+                      color: "#2A2A2A",
+                      margin: 24,
+                    }}>1.</Text>
+                    <Pressable
+                      style={[styles.button, { width: '75%' }]}
+                      onPress={() => {
+                        Linking.openURL(`https://www.google.com/maps/dir/?api=1&origin=${lat},${long}&destination=11.018519,77.007314&travelmode=driving`);
+                      }}
+                    >
+                      <Text style={styles.buttonText}>PSG Hospital</Text>
+                    </Pressable>
+                  </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{
-                  fontSize: 48,
-                  fontWeight: "bold",
-                  color: "#2A2A2A",
-                  margin: 24,
-                }}>2.</Text>
-                <Pressable
-                  style={[styles.button, { width: '75%' }]}
-                  onPress={() => {
-                    Linking.openURL(`https://www.google.com/maps/dir/?api=1&origin=${lat},${long}&destination=11.026548,77.017467&travelmode=driving`);
-                  }}
-                >
-                  <Text style={styles.buttonText}>Sumith Hospital</Text>
-                </Pressable>
-              </View>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={{
+                      fontSize: 48,
+                      fontWeight: "bold",
+                      color: "#2A2A2A",
+                      margin: 24,
+                    }}>2.</Text>
+                    <Pressable
+                      style={[styles.button, { width: '75%' }]}
+                      onPress={() => {
+                        Linking.openURL(`https://www.google.com/maps/dir/?api=1&origin=${lat},${long}&destination=11.026548,77.017467&travelmode=driving`);
+                      }}
+                    >
+                      <Text style={styles.buttonText}>Sumith Hospital</Text>
+                    </Pressable>
+                  </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{
-                  fontSize: 48,
-                  fontWeight: "bold",
-                  color: "#2A2A2A",
-                  margin: 24,
-                }}>3.</Text>
-                <Pressable
-                  style={[styles.button, { width: '75%' }]}
-                  onPress={() => {
-                    Linking.openURL(`https://www.google.com/maps/dir/?api=1&origin=${lat},${long}&destination=11.019692,76.994999&travelmode=driving`);
-                  }}
-                >
-                  <Text style={styles.buttonText}>Hindusthan Hospital</Text>
-                </Pressable>
-              </View>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={{
+                      fontSize: 48,
+                      fontWeight: "bold",
+                      color: "#2A2A2A",
+                      margin: 24,
+                    }}>3.</Text>
+                    <Pressable
+                      style={[styles.button, { width: '75%' }]}
+                      onPress={() => {
+                        Linking.openURL(`https://www.google.com/maps/dir/?api=1&origin=${lat},${long}&destination=11.019692,76.994999&travelmode=driving`);
+                      }}
+                    >
+                      <Text style={styles.buttonText}>Hindusthan Hospital</Text>
+                    </Pressable>
+                  </View>
+                </View>
+              )}
 
             </View>
           </ScrollView>

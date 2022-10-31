@@ -30,13 +30,13 @@ const HomeScreen = ({ navigation }) => {
               <Text style={styles.heading}>Social Health Care</Text>
               <Text style={styles.subtext}>Home Screen</Text>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 48}}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 48, alignItems: "center" }}>
                 <Image
                   style={styles.imageProp}
                   source={require('../assets/id.png')}
                 ></Image>
                 <Pressable
-                  style={[styles.button, { width: '75%' }]}
+                  style={[styles.button, { width: '75%', marginBottom: 16  }]}
                   onPress={() => {
                     navigation.navigate("Register");
                   }}
@@ -45,13 +45,13 @@ const HomeScreen = ({ navigation }) => {
                 </Pressable>
               </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: "center"  }}>
                 <Image
                   style={styles.imageProp}
                   source={require('../assets/siren.png')}
                 ></Image>
                 <Pressable
-                  style={[styles.button, { width: '75%' }]}
+                  style={[styles.button, { width: '75%', marginBottom: 16  }]}
                   onPress={() => {
                     navigation.navigate("ReportEmergency");
                   }}
@@ -60,28 +60,28 @@ const HomeScreen = ({ navigation }) => {
                 </Pressable>
               </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: "center"  }}>
                 <Image
                   style={styles.imageProp}
                   source={require('../assets/help.png')}
                 ></Image>
                 <Pressable
-                  style={[styles.button, { width: '75%' }]}
+                  style={[styles.button, { width: '75%', marginBottom: 16  }]}
                   onPress={() => {
-                    navigation.navigate("Register");
+                    navigation.navigate("Assist");
                   }}
                 >
                   <Text style={styles.buttonText}>Assist</Text>
                 </Pressable>
               </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: "center" }}>
                 <Image
                   style={styles.imageProp}
                   source={require('../assets/hospital.png')}
                 ></Image>
                 <Pressable
-                  style={[styles.button, { width: '75%' }]}
+                  style={[styles.button, { width: '75%', marginBottom: 16  }]}
                   onPress={() => {
                     navigation.navigate("Hospitals");
                   }}
@@ -90,13 +90,13 @@ const HomeScreen = ({ navigation }) => {
                 </Pressable>
               </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: "center" }}>
                 <Image
                   style={styles.imageProp}
                   source={require('../assets/call.png')}
                 ></Image>
                 <Pressable
-                  style={[styles.button, { width: '75%' }]}
+                  style={[styles.button, { width: '75%', marginBottom: 16 }]}
                   onPress={() => {
                     Linking.openURL(`tel:${108}`);
                   }}
@@ -185,8 +185,8 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   imageProp: {
-    width: 60,
-    height: 60,
-    margin: 16,
+    width: 40,
+    height: 40,
+    margin: 24
   },
 });
